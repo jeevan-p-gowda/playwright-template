@@ -9,7 +9,7 @@ export default defineConfig({
   testDir: './tests',
   workers: 1,
   reporter: [['html', { open: 'never' }],
-  /*[".src/utils/WinstonLoggerConfig.ts"]*/],
+  ["./WinstonLoggerConfig.ts"]],
   use: {
     viewport: { width: 1280, height: 720 },
     browserName: 'chromium',
