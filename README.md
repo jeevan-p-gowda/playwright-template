@@ -23,7 +23,7 @@ E-Commerce - [Website](https://web-playground.ultralesson.com)
    EMAIL=xxxx@gmail.com
    PASSWORD=Xxxx@xx24
    ```
-   > Config secrets on CI differs from tool to tool, kindly refactor/use different approach.
+   > Config secrets on CI differs from tool to tool, kindly refactor / use different approach.
 
 ### ⏯️Execution
 `ENV=<env name> npx playwright test <path to test file>`
