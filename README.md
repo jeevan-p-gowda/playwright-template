@@ -11,7 +11,7 @@ E-Commerce - [Website](https://web-playground.ultralesson.com)
 
 ### 🛠️Setup
 1. Install [Git Bash](https://git-scm.com/downloads) - for Windows
-2. Install [NodeJS](https://nodejs.org/en) - based on your platform
+2. Install [NodeJS](https://nodejs.org/en) >=18 - based on your platform
 3. `git clone` the repo
 4. Install [VS Code](https://code.visualstudio.com/) Editor and open the repo
 5. `npm i` - installs all dependencies
