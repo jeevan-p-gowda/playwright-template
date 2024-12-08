@@ -6,7 +6,7 @@ This repository provides a template for getting started with Playwright testing 
 E-Commerce - [Website](https://web-playground.ultralesson.com)
 
 ### 🏗️Pre-requisite
-1. JavaScript foundation and beyond
+1. TypeScript foundation and beyond
 2. Playwright basics
 
 ### 🛠️Setup
