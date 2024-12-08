@@ -2,14 +2,14 @@ import { test as baseTest } from '@playwright/test';
 import LoginPage from '../pageObjects/LoginPage';
 import CommonPage from '../pageObjects/CommonPage';
 
-type variables = {
+type fixtures = {
     env: string,
     email: string,
     password: string,
     testHook: void
 }
 
-export const test = baseTest.extend<variables>({
+export const test = baseTest.extend<fixtures>({
     env: async ({ }, use) => {
         await use(process.env.ENV as string);
     },
@@ -29,10 +29,15 @@ export const test = baseTest.extend<variables>({
         //         throw new Error(msg.text());
         //     }
         // });
+        console.log('Navigating to base URL');
         await page.goto("/");
         const commonPage = new CommonPage(page);
         await commonPage.navigateToLoginPage();
         const loginPage = new LoginPage(page);
+
+        console.log('Logging in');
         await loginPage.login(email, password);
+
+        await use();
     }, { auto: true }]
 })
