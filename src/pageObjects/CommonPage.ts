@@ -9,7 +9,7 @@ export default class CommonPage extends BasePage {
     constructor(page: Page) {
         super(page);
         this.page = page;
-        this.homeIcon = page.locator('.home-icon');
+        this.homeIcon = page.locator("//span[.='Home']");
         this.accountIcon = page.getByRole('link', { name: 'Log in' });
     }
 
