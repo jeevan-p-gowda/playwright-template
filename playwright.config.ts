@@ -2,7 +2,7 @@ import { defineConfig } from '@playwright/test';
 import dotenv from 'dotenv';
 
 dotenv.config({
-  path: `${process.cwd()}/env/${process.env.ENV}.env`,
+  path: `${process.cwd()}/.env/${process.env.ENV}.env`,
 });
 
 export default defineConfig({
