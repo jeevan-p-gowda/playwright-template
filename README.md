@@ -7,7 +7,7 @@ E-Commerce - [Website](https://web-playground.ultralesson.com)
 
 ### 🏗️Pre-requisite
 1. TypeScript foundation and beyond
-2. Playwright basics
+2. Playwright
 
 ### 🛠️Setup
 1. Install [Git Bash](https://git-scm.com/downloads) - for Windows
