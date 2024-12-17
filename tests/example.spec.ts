@@ -41,4 +41,14 @@ test.describe('Search E2E tests', () => {
     console.log(`Asserting search results heading: ${searchResultHeading}`);
     await productsAssertions.assertSearchResultsHeading(searchResultHeading);
   });
+
+  test('verify search product2', async ({ productPage, productData, productsAssertions }) => {
+    console.log(`Searching for product: ${productData.productName}`);
+    await productPage.searchForProduct(productData.productName);
+    const searchResultHeading = await productPage.getSearchResultsHeading();
+
+    console.log(`Asserting search results heading: ${searchResultHeading}`);
+    await productsAssertions.assertSearchResultsHeading(searchResultHeading);
+  });
+
 });
