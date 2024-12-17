@@ -31,12 +31,6 @@ export const test = baseTest.extend<fixtures>({
         // });
         console.log('Navigating to base URL');
         await page.goto("/");
-        const commonPage = new CommonPage(page);
-        await commonPage.navigateToLoginPage();
-        const loginPage = new LoginPage(page);
-
-        console.log('Logging in');
-        await loginPage.login(email, password);
 
         await use();
     }, { auto: true }]

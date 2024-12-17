@@ -18,6 +18,9 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'retain-on-failure',
+    storageState: `.auth/${process.env.ENV}-auth.json`
   },
   expect: { timeout: 15000 },
+  globalSetup: require.resolve('./src/fixtures/GlobalSetup.ts'),
+  globalTeardown: require.resolve('./src/fixtures/GlobalTeardown.ts')
 });
