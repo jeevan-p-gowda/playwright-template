@@ -16,7 +16,7 @@ E-Commerce - [Website](https://web-playground.ultralesson.com)
 4. Install [VS Code](https://code.visualstudio.com/) Editor and open the repo
 5. `npm i` - installs all dependencies
 6. `npx playwright install` - installs all required browsers
-7. Create a folder 📁env under the root dir, then within it create `.env` file containing variables of app which has to be maintained as a secret. Below is the example,
+7. Create a folder 📁.env under the root dir, then within it create `.env` file containing variables of app which has to be maintained as a secret. Below is the example,
    ```env
    stage.env
    BASE_URL=https://web-playground.ultralesson.com/account/login
