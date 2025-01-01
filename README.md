@@ -14,9 +14,8 @@ E-Commerce - [Website](https://web-playground.ultralesson.com)
 2. Install [NodeJS](https://nodejs.org/en) >=18 - based on your platform
 3. `git clone` the repo
 4. Install [VS Code](https://code.visualstudio.com/) Editor and open the repo
-5. `npm i` - installs all dependencies
-6. `npx playwright install` - installs all required browsers
-7. Create a folder 📁.env under the root dir, then within it create `.env` file containing variables of app which has to be maintained as a secret. Below is the example,
+5. `yarn` - installs all dependencies
+6. Create a folder 📁.env under the root dir, then within it create `.env` file containing variables of app which has to be maintained as a secret. Below is the example,
    ```env
    stage.env
    BASE_URL=https://web-playground.ultralesson.com/account/login
@@ -26,5 +25,5 @@ E-Commerce - [Website](https://web-playground.ultralesson.com)
    > Config secrets on CI differs from tool to tool, kindly refactor / use different approach.
 
 ### ⏯️Execution
-`ENV=<env name> npx playwright test <path to test file>`
+`ENV=<env name> yarn playwright test <path to test file>`
 > If using Windows, set IDE terminal to Git Bash and execute.
