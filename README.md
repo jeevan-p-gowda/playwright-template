@@ -5,6 +5,12 @@ This repository provides a template for getting started with Playwright testing 
 ### 🧩Application
 E-Commerce - [Website](https://web-playground.ultralesson.com)
 
+[Swagger](https://www.apicademy.dev/docs/)
+
+[Postman publish](https://documenter.getpostman.com/view/31125524/2s9YXmWKgB)
+
+[Postman collection](https://www.apicademy.dev/postman-collection-download). Import the downloaded JSON into Postman.
+
 ### 🏗️Pre-requisite
 1. TypeScript foundations and beyond
 2. Playwright
