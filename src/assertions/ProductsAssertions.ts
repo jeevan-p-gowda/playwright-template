@@ -1,7 +1,11 @@
 import CommonAssertions from "./CommonAssertions";
 
 export default class ProductsAssertions extends CommonAssertions {
-    async assertSearchResultsHeading(heading: string): Promise<void> {
-        await this.assertValueEquals(heading, 'Search Results', true);
+    async assertSearchResultsHeading(heading: string, options?: { soft: boolean }): Promise<void> {
+        if (options) {
+            await this.assertValueEquals(heading, 'Search Results', { soft: options.soft });
+        } else {
+            await this.assertValueEquals(heading, 'Search Results');
+        }
     }
 }

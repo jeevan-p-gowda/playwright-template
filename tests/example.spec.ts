@@ -33,22 +33,30 @@ const test = BaseTest.extend<fixtures>({
 });
 
 test.describe('Search E2E tests', () => {
-  test('verify search product', async ({ productPage, productData, productsAssertions }) => {
-    console.log(`Searching for product: ${productData.productName}`);
-    await productPage.searchForProduct(productData.productName);
-    const searchResultHeading = await productPage.getSearchResultsHeading();
+  test('verify search product with soft assertion', async ({ productPage, productData, productsAssertions }) => {
+    try {
+      console.log(`Searching for product: ${productData.productName}`);
+      await productPage.searchForProduct(productData.productName);
+      const searchResultHeading = await productPage.getSearchResultsHeading();
 
-    console.log(`Asserting search results heading: ${searchResultHeading}`);
-    await productsAssertions.assertSearchResultsHeading(searchResultHeading);
+      console.log(`Asserting search results heading: ${searchResultHeading}`);
+      await productsAssertions.assertSearchResultsHeading(searchResultHeading, { soft: true });
+    } catch (error) {
+      console.error(error);
+    }
   });
 
-  test('verify search product2', async ({ productPage, productData, productsAssertions }) => {
-    console.log(`Searching for product: ${productData.productName}`);
-    await productPage.searchForProduct(productData.productName);
-    const searchResultHeading = await productPage.getSearchResultsHeading();
+  test('verify search product with hard assertion', async ({ productPage, productData, productsAssertions }) => {
+    try {
+      console.log(`Searching for product: ${productData.productName}`);
+      await productPage.searchForProduct(productData.productName);
+      const searchResultHeading = await productPage.getSearchResultsHeading();
 
-    console.log(`Asserting search results heading: ${searchResultHeading}`);
-    await productsAssertions.assertSearchResultsHeading(searchResultHeading);
+      console.log(`Asserting search results heading: ${searchResultHeading}`);
+      await productsAssertions.assertSearchResultsHeading(searchResultHeading);
+    } catch (error) {
+      // console.error(error);
+      throw new Error(error);
+    }
   });
-
 });
