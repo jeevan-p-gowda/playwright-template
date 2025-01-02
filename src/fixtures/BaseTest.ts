@@ -1,6 +1,4 @@
 import { test as baseTest } from '@playwright/test';
-import LoginPage from '../pageObjects/LoginPage';
-import CommonPage from '../pageObjects/CommonPage';
 
 type fixtures = {
     env: string,
@@ -22,7 +20,7 @@ export const test = baseTest.extend<fixtures>({
         await use(process.env.PASSWORD as string);
     },
 
-    testHook: [async ({ page, email, password }, use) => {
+    testHook: [async ({ page }, use) => {
         // page.on('console', msg => {
         //     if (msg.type() === 'error') {
         //         console.error('Error:', msg.text());
