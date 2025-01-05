@@ -1,5 +1,5 @@
-import { Locator, Page } from "@playwright/test";
-import BasePage from "../fixtures/BasePage";
+import { Locator, Page } from '@playwright/test';
+import BasePage from '../fixtures/BasePage';
 
 export default class CommonPage extends BasePage {
     private readonly page: Page;

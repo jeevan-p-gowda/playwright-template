@@ -1,9 +1,9 @@
-import { Page } from "@playwright/test";
+import { Page } from '@playwright/test';
 
 export default class PageActions {
-    private readonly page: Page;
+  private readonly page: Page;
 
-    constructor(page: Page) {
-        this.page = page;
-    }
+  constructor(page: Page) {
+    this.page = page;
+  }
 }

@@ -1,3 +1,3 @@
 export interface ProductData {
-    productName: string
+  productName: string;
 }

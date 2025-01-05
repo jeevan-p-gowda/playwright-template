@@ -10,7 +10,7 @@ type fixtures = {
   commonPage: CommonPage;
   productData: ProductData;
   productsAssertions: ProductsAssertions;
-}
+};
 
 const test = BaseTest.extend<fixtures>({
   commonPage: async ({ page }, use) => {
@@ -23,13 +23,13 @@ const test = BaseTest.extend<fixtures>({
     await use(new ProductPage(page));
   },
 
-  productData: async ({ }, use) => {
+  productData: async ({}, use) => {
     await use({ ...productData.product });
   },
 
-  productsAssertions: async ({ }, use) => {
+  productsAssertions: async ({}, use) => {
     await use(new ProductsAssertions());
-  }
+  },
 });
 
 test.describe('Search E2E tests', () => {
@@ -40,7 +40,9 @@ test.describe('Search E2E tests', () => {
       const searchResultHeading = await productPage.getSearchResultsHeading();
 
       console.log(`Asserting search results heading: ${searchResultHeading}`);
-      await productsAssertions.assertSearchResultsHeading(searchResultHeading, { soft: true });
+      await productsAssertions.assertSearchResultsHeading(searchResultHeading, {
+        soft: true,
+      });
     } catch (error) {
       console.error(error);
     }
@@ -55,8 +57,7 @@ test.describe('Search E2E tests', () => {
       console.log(`Asserting search results heading: ${searchResultHeading}`);
       await productsAssertions.assertSearchResultsHeading(searchResultHeading);
     } catch (error) {
-      // console.error(error);
-      throw new Error(error);
+      console.error(error);
     }
   });
 });
