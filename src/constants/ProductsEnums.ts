@@ -1,3 +1,3 @@
 export enum ProductsEnums {
-    SEARCH_RESULTS = "Search results"
+  SEARCH_RESULTS = 'Search results',
 }
