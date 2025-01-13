@@ -22,7 +22,7 @@ E-Commerce - [Website](https://web-playground.ultralesson.com)
 4. Install [VS Code](https://code.visualstudio.com/) Editor and open the repo
 5. `corepack enable`
 6. `yarn` - installs all dependencies
-7. `yarn playwright install`
+7. `yarn playwright install` - installs all browsers
 8. Create a folder 📁.env under the root dir, then within it create `.env` file containing variables of app which has to be maintained as a secret. Below is the example,
    ```env
    stage.env
