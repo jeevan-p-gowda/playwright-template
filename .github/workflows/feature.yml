@@ -10,7 +10,7 @@ on:
 jobs:
   playwright:
     name: 'Feature tests'
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-24.04
     container:
       image: mcr.microsoft.com/playwright:v1.46.0-noble
     steps:
