@@ -10,9 +10,9 @@ on:
 jobs:
   playwright:
     name: 'Feature tests'
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.43.0-jammy
+      image: mcr.microsoft.com/playwright:v1.49.1-noble
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
