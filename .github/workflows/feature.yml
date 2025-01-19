@@ -10,7 +10,7 @@ on:
 jobs:
   playwright:
     name: 'Feature tests'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
     container:
       image: mcr.microsoft.com/playwright:v1.49.1-noble
     steps:
@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 18
       - name: Install dependencies
-        run: yarn
+        run: corepack enable && yarn
 
       - name: Run your tests
         run: yarn playwright test ${{ github.event.inputs.test }}
