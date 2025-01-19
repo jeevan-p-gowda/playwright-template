@@ -8,7 +8,7 @@ dotenv.config({
 export default defineConfig({
   testDir: './tests',
   workers: 1,
-  reporter: [['html', { open: 'never' }], ['./src/utils/WinstonLoggerConfig.ts']],
+  reporter: [['html', { open: 'never' }], ['./src/utils/WinstonLoggerConfig.ts'], ['junit', { outputFile: 'playwright-report/junit.xml' }]],
   use: {
     viewport: { width: 1280, height: 720 },
     browserName: 'chromium',

@@ -1,0 +1,144 @@
+name: Feature tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      test:
+        description: 'Test files/folders path'
+        required: true
+
+jobs:
+  playwright:
+    name: 'Feature tests'
+    runs-on: ubuntu-24.04-arm
+    container:
+      image: mcr.microsoft.com/playwright:v1.43.0-jammy
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: yarn
+
+      - name: Run your tests
+        run: yarn playwright test ${{ github.event.inputs.test }}
+        env:
+          # ENV: saas
+          # CI: true
+          BASE_URL: ${{ secrets.BASE_URL }}
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+
+      - uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: Tests
+          path: playwright-report/junit.xml
+          reporter: jest-junit
+#       - name: Install jq
+#         if: always()
+#         run: |
+#           wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
+#           chmod +x ./jq
+#           mv jq /usr/local/bin
+
+#       - name: Capturing test stats
+#         if: always()
+#         run: |
+#           PASS_COUNT=$(jq '.stats.expected' test-results/results.json)
+#           FAIL_COUNT=$(jq '.stats.unexpected' test-results/results.json)
+#           SKIP_COUNT=$(jq '.stats.skipped' test-results/results.json)
+#           FLAKY_COUNT=$(jq '.stats.flaky' test-results/results.json)
+#           TOTAL_COUNT=$((PASS_COUNT + FAIL_COUNT + SKIP_COUNT + FLAKY_COUNT))
+#           echo "PASS_COUNT=${PASS_COUNT}" >> $GITHUB_ENV
+#           echo "FAIL_COUNT=${FAIL_COUNT}" >> $GITHUB_ENV
+#           echo "SKIP_COUNT=${SKIP_COUNT}" >> $GITHUB_ENV
+#           echo "FLAKY_COUNT=${FLAKY_COUNT}" >> $GITHUB_ENV
+#           echo "TOTAL_COUNT=${TOTAL_COUNT}" >> $GITHUB_ENV
+
+#       - name: Send Slack notification
+#         if: always()
+#         uses: rtCamp/action-slack-notify@v2
+#         env:
+#           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+#           SLACK_CHANNEL: "#test-automation"
+#           SLACK_USERNAME: GitHub Actions
+#           SLACK_MESSAGE: "Passed: ${{ env.PASS_COUNT }} | Failed: ${{ env.FAIL_COUNT }} | Skipped: ${{ env.SKIP_COUNT }}\n\
+#             Test results artifact - https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+#           SLACK_COLOR: ${{ job.status }}
+#           SLACK_ICON: https://avatars.githubusercontent.com/u/44036562?s=200&v=4
+
+#       - name: Send E-mail notification
+#         if: always()
+#         uses: dawidd6/action-send-mail@v2
+#         with:
+#           server_address: smtp.gmail.com
+#           server_port: 465
+#           username: ${{ secrets.NOTIFICATIONS_EMAIL_ID }}
+#           password: ${{ secrets.NOTIFICATIONS_EMAIL_APP_PASSWORD }}
+#           subject: 🎭${{ github.workflow }} of ${{ github.repository }} is a ${{ job.status }}
+#           content_type: text/html
+#           body: |
+#             ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} is a ${{ job.status }}
+#             <br><br>
+#             <!DOCTYPE html>
+#             <html>
+#             <head>
+#               <title>HTML Table Generator</title>
+#               <style>
+#                 table {
+#                   border:1px solid #b3adad;
+#                   border-collapse:collapse;
+#                   padding:5px;
+#                 }
+#                 table th {
+#                   border:1px solid #b3adad;
+#                   padding:5px;
+#                   background: #f0f0f0;
+#                   color: #313030;
+#                 }
+#                 table td {
+#                   border:1px solid #b3adad;
+#                   text-align:center;
+#                   padding:5px;
+#                   background: #ffffff;
+#                   color: #313030;
+#                 }
+#               </style>
+#             </head>
+#             <body>
+#               <table>
+#                 <thead>
+#                   <tr>
+#                     <th>Total Tests</th>
+#                     <th>Passed</th>
+#                     <th>Failed</th>
+#                     <th>Skipped</th>
+#                   </tr>
+#                 </thead>
+#                 <tbody>
+#                   <tr>
+#                     <td>${{ env.TOTAL_COUNT }}</td>
+#                     <td>${{ env.PASS_COUNT }}</td>
+#                     <td>${{ env.FAIL_COUNT }}</td>
+#                     <td>${{ env.SKIP_COUNT }}</td>
+#                   </tr>
+#                 </tbody>
+#               </table>
+#             </body>
+#             </html>
+#             <br>
+#             <p>
+#               <b>Test result artifact</b><br>
+#               https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+#             <br>
+#             </p>
+#           to: xxxx@xxx.com
+#           from: GitHub Actions
