@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "signUp": "/api/auth/signup",
+    "login": "/api/auth/login"
+  },
+  "product": {
+    "products": "/api/products"
+  },
+  "cart": {
+    "cart": "/api/cart",
+    "items": "/api/cart/{CART_ID}/items"
+  },
+  "payment": {
+    "payment": "/api/payment"
+  }
+}

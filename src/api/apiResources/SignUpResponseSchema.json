@@ -1,0 +1,106 @@
+{
+    "type": "object",
+    "required": [
+        "data"
+    ],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": [
+                "user",
+                "session"
+            ],
+            "properties": {
+                "user": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "aud",
+                        "role",
+                        "email",
+                        "created_at",
+                        "updated_at"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "aud": {
+                            "type": "string"
+                        },
+                        "role": {
+                            "type": "string"
+                        },
+                        "email": {
+                            "type": "string"
+                        },
+                        "email_confirmed_at": {
+                            "type": "string"
+                        },
+                        "phone": {
+                            "type": "string"
+                        },
+                        "last_sign_in_at": {
+                            "type": "string"
+                        },
+                        "app_metadata": {
+                            "type": "object",
+                            "required": [
+                                "provider",
+                                "providers"
+                            ],
+                            "properties": {
+                                "provider": {
+                                    "type": "string"
+                                },
+                                "providers": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "user_metadata": {
+                            "type": "object"
+                        },
+                        "created_at": {
+                            "type": "string"
+                        },
+                        "updated_at": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "session": {
+                    "type": "object",
+                    "required": [
+                        "access_token",
+                        "token_type",
+                        "expires_in",
+                        "expires_at",
+                        "refresh_token",
+                        "user"
+                    ],
+                    "properties": {
+                        "access_token": {
+                            "type": "string"
+                        },
+                        "token_type": {
+                            "type": "string"
+                        },
+                        "expires_in": {
+                            "type": "number"
+                        },
+                        "expires_at": {
+                            "type": "number"
+                        },
+                        "refresh_token": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
