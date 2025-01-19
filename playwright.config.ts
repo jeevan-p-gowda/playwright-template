@@ -21,5 +21,5 @@ export default defineConfig({
   },
   expect: { timeout: 15000 },
   globalSetup: require.resolve('./src/fixtures/GlobalSetup.ts'),
-  globalTeardown: require.resolve('./src/fixtures/GlobalTeardown.ts'),
+  globalTeardown: require.resolve('./src/fixtures/GlobalTearDown.ts'),
 });
