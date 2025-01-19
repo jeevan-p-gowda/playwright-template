@@ -6,7 +6,10 @@ on:
       test:
         description: 'Test files/folders path'
         required: true
-
+permissions:
+  contents: read
+  actions: read
+  checks: write
 jobs:
   playwright:
     name: 'Feature tests'
