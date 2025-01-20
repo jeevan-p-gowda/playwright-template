@@ -22,10 +22,15 @@ pipeline {
         stage('Setting up test bed') {
             steps {
 		    script{
-                withCredentials([file(credentialsId: params.ENV)]) {
-                    sh "mkdir /root/.env && cp ${params.ENV} /root/.env/"
+                withCredentials([file(credentialsId: params.ENV, variable: params.ENV)]) {
+                    sh """
+                    mkdir -p .env
+                    cp \$${params.ENV} .env/
+                    corepack enable
+                    yarn
+                    yarn playwright install chromium
+                    """
                 }
-			    sh "corepack enable && yarn"
 		    }
             }
         }
