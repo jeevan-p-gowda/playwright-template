@@ -1,5 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 import BasePage from '../fixtures/BasePage';
+import { step } from '../utils/WinstonLoggerConfig';
 
 export default class CommonPage extends BasePage {
   private readonly page: Page;
@@ -13,10 +14,12 @@ export default class CommonPage extends BasePage {
     this.accountIcon = page.getByRole('link', { name: 'Log in' });
   }
 
+  @step('Navigating to products page')
   async navigateToProductsPage(): Promise<void> {
     await this.homeIcon.click();
   }
 
+  @step()
   async navigateToLoginPage(): Promise<void> {
     await this.accountIcon.click();
   }

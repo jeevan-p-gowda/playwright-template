@@ -1,4 +1,8 @@
-import { FullConfig, Reporter, Suite, TestCase, TestError, TestResult } from '@playwright/test/reporter';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+import { FullConfig, Reporter, Suite, TestCase, TestError, TestResult, TestStep } from '@playwright/test/reporter';
+import { test } from '@playwright/test';
+
 const winston = require('winston');
 
 const logger = winston.createLogger({
@@ -17,7 +21,7 @@ const logger = winston.createLogger({
       ) {
         message = `\x1b[31m${message}\x1b[0m`;
       } else if (info.level === 'skipped') {
-        message = `\x1b[31m${message}\x1b[0m`;
+        message = `\x1b[33m${message}\x1b[0m`;
       } else {
         message = message;
       }
@@ -48,7 +52,35 @@ export default class WinstonLoggerConfig implements Reporter {
     logger.error(chunk.toString());
   }
 
+  onStepBegin(test: TestCase, result: TestResult, step: TestStep): void {
+    if (step.category === `test.step`) {
+      // logger.info(`Executing : ${step.title} function`);
+      logger.info(`${step.title}`);
+    }
+  }
+
   onError(error: TestError): void {
     logger.error(`Error occurred: ${error.message}`);
   }
+}
+
+/**
+ * Decorator function for wrapping POM methods in a test.step.
+ *
+ * Use it without a step name `@step()`.
+ *
+ * Or with a step name `@step("Search something")`.
+ *
+ * @param stepName - The name of the test step.
+ * @returns A decorator function that can be used to decorate test methods.
+ */
+export function step(stepName?: string): any {
+  return function decorator(target: Function, context: ClassMethodDecoratorContext) {
+    return function replacementMethod(...args: any) {
+      const name = `${stepName || (context.name as string)}`;
+      return test.step(name, async () => {
+        return await target.call(this, ...args);
+      });
+    };
+  };
 }

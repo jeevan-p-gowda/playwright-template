@@ -1,5 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 import BasePage from '../fixtures/BasePage';
+import { step } from '../utils/WinstonLoggerConfig';
 
 export default class ProductsPage extends BasePage {
   private readonly searchIcon: Locator;
@@ -15,12 +16,14 @@ export default class ProductsPage extends BasePage {
     });
   }
 
+  @step()
   async searchForProduct(product: string): Promise<void> {
     await this.searchIcon.click();
     await this.searchField.fill(product);
     await this.searchField.press('Enter');
   }
 
+  @step()
   async getSearchResultsHeading(): Promise<string> {
     return await this.searchResultsHeading.innerText();
   }
