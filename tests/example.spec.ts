@@ -33,7 +33,7 @@ const test = BaseTest.extend<fixtures>({
 });
 
 test.describe('Search E2E tests', () => {
-  test('verify search product with soft assertion', async ({ productPage, productData, productsAssertions }) => {
+  test('verify search product with soft assertion', { tag: ['@sanity', '@regression'] }, async ({ productPage, productData, productsAssertions }) => {
     try {
       console.log(`Searching for product: ${productData.productName}`);
       await productPage.searchForProduct(productData.productName);
@@ -48,7 +48,7 @@ test.describe('Search E2E tests', () => {
     }
   });
 
-  test('verify search product with hard assertion', async ({ productPage, productData, productsAssertions }) => {
+  test('verify search product with hard assertion', { tag: '@sanity' }, async ({ productPage, productData, productsAssertions }) => {
     try {
       console.log(`Searching for product: ${productData.productName}`);
       await productPage.searchForProduct(productData.productName);
