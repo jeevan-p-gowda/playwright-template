@@ -2,77 +2,78 @@
 
 The framework has been built following industry best practices to ensure robustness. We encourage contributors to adhere to the guidelines below to maintain this standard.
 
-## Style Guide
-
-### Repo
-
-- **File** : Follow PascalCase naming.
-
-  ex: `CommonAsserions.ts`, `LoginPage.ts`
-
-- **Folder** : The first letter should be lowercase, and subsequent words should start with an uppercase letter.
-
-  ex: `apiClients/`, `apiFixtures/`
-
-- **Spec** : Any file that is specific to a framework, library, or system should follow its native naming convention.
-
-  ex: `endpoints.json`
-
-### Objects
-
-- **Classes / Interface/ Enums** - Follow PascalCase naming.
-
-  ex: `class Table {}`, `enum Sse {}`, `interface Endpoints {}`
-
-- **Functions** - The first letter should be lowercase, and subsequent words should start with an uppercase letter.
-
-  ex: `async apiBuilder(){}`, `func randomString(){}`
-
-- **Variables** - The first letter should be lowercase, and subsequent words should start with an uppercase letter.
-
-  ex: `var textBox`, `page: Page`, `type fixtures = {}`
-
-### Git
-
-- **Branch name** : If a JIRA ticket is created for the task, use its ID (for accountability); otherwise, use a short name for the task.
-
-  ex: `CLSESEN-123`, `src-refactor`, `sentinel-tests`
-
-- **Commit message** : A concise summary of the commit, usually limited to 50 characters.
-
-  ex: `improve error handling on login form submission`
-
-### Pull request
-
-- **Title**: Start with JIRA ticket id, followed by an meaning full title.
-
-  ex: `tests[JIRA ticker id]: E2E tests of sentinel alerts`
+Get a walkthrough of the framework before stepping into it.
 
 ## Coding
 
-Get a walkthrough of the framework before stepping into it.
-
 Strictly follow **SRP** while coding.
-- **Branching** - Always pull the latest changes from the `main` branch before creating a new branch.
+- **Branching** - Always pull the latest changes from the `main` branch before creating a new branch from it.
 - **Scripting**
 
   - Create page objects, assertions, utilities, resources, and spec files only if they do not already exist.
     - Use fixtures for setup and teardown.
     - Leverage API's for creating and cleaning up test data.
     - Attach tags for grouping tests when necessary.
-    - Ensure the test case name matches the test repository for better traceability.
+    - Ensure the test case name matches the test name in test repository for better traceability.
     - Follow the AAA pattern when designing test scripts.
   > Refer to existing resources and test specs for better understanding.
 
-- **Linting and formatting** - ESLint and Prettier are configured to automatically format code when saving the file.
+- **Linting and formatting** - **_ESLint_** and **_Prettier_** are configured to automatically format code when saving the file.
 - **Type checking** 
-  - A Git pre-commit hook using Husky ensures type checking.
+  - A git pre-commit hook has been configured using **_Husky_** ensures type checking.
   - Resolve any errors before committing changes.
 - **Execute** 
   - Run tests using Playwright CLI commands, VS Code Playwright Test Runner, or Playwright UI.
 - **Debugging** 
   - Use Playwright Debugger or VS Code Debugger for step-by-step execution.
   - Utilize Playwright HTML reports, screenshots, videos, or the Trace Viewer for debugging failed tests.
+
+## Style Guide
+
+### Repo
+
+- **File** - follow PascalCase naming.
+
+  ex: `CommonAsserions.ts`, `LoginPage.ts`
+
+- **Folder** - follow CamelCase naming.
+
+  ex: `apiClients/`, `apiFixtures/`
+
+- **Spec** - any file that is specific to a framework, library, or system should follow its native naming convention.
+
+  ex: `endpoints.json`
+
+### Objects
+
+- **Classes / Interface/ Enums** - follow PascalCase naming.
+
+  ex: `class Table {}`, `enum Sse {}`, `interface Endpoints {}`
+
+- **Functions** - follow CamelCase naming.
+
+  ex: `async apiBuilder(){}`, `func randomString(){}`
+
+- **Variables** - follow CamelCase naming.
+
+  ex: `var textBox`, `page: Page`, `type fixtures = {}`
+
+### Git
+
+- **Branch name** - If a JIRA ticket is created for the task, use its ID (for accountability); otherwise, use a short name (kebab case) for the task.
+
+  ex: `CLSESEN-123`, `src-refactor`, `sentinel-tests`
+
+- **Commit message** - A concise summary of the commit, usually limited to 50 characters.
+
+  ex: `improve error handling on login form submission`
+
+### Pull request
+
+- **Title** - Start with JIRA ticket id, followed by an meaningful title.
+
+  ex: `tests[JIRA ticker id]: E2E tests of sentinel alerts`
+
 
 ## Pull Request, CI, and Merging
 
@@ -88,7 +89,7 @@ Strictly follow **SRP** while coding.
 Branch validation has been carried out on Jenkins Multi branch pipeline.
 
 - **Pre-requisite**
-  - Prepare a `.env` file and store it scoped to pipeline.
+  - Prepare a `.env` file which has required secrets and store it scoped to pipeline.
 - **Trigger a test run**
   - Navigate to Pull Requests -> PR Title -> Build with Parameters.
   - Fill in all required fields and start the build.
@@ -98,7 +99,7 @@ Branch validation has been carried out on Jenkins Multi branch pipeline.
 
 Merging to the `main` branch has to be done only after evaluation the following,
 
-- All reviewer comments must be addressed and reviewed again.
+- All reviewer comments must be addressed and reviewed again after pushing resolves.
 - Test runs on both local and CI environments must pass.
 
 ## Best practices
