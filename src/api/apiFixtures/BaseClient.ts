@@ -1,4 +1,4 @@
-import { APIRequestContext } from 'playwright';
+import { APIRequestContext } from '@playwright/test';
 import SerializeDeserialize from '../apiUtils/SerializeDeserialize';
 import StringBuilder from '../../utils/StringBuilder';
 

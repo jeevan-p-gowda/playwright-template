@@ -15,13 +15,13 @@ export default class CartClient extends BaseClient {
 
   async createCart(): Promise<void> {
     const cartEndpoint = this.endpoints.cart.cart;
-    const cartAPI = await this.stringBuilder.APIBuilder(BaseClient.apiURL, cartEndpoint);
+    const cartAPI = await this.stringBuilder.apiBuilder(BaseClient.apiURL, cartEndpoint);
     await this.request.post(cartAPI, {});
   }
 
   async addItemToCart(): Promise<void> {
     const itemsEndpoint = this.endpoints.cart.items;
-    const itemsAPI = await this.stringBuilder.APIBuilder(BaseClient.apiURL, itemsEndpoint);
+    const itemsAPI = await this.stringBuilder.apiBuilder(BaseClient.apiURL, itemsEndpoint);
     await this.request.post(itemsAPI, {});
   }
 }
