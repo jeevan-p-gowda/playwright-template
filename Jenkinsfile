@@ -1,5 +1,5 @@
 // Create a multi-branch pipeline job in Jenkins prior pushing this file to remote.
-// Install docker plugins and enable SSH agent plugin
+// Install docker plugins (Docker Pipeline) and enable SSH agent plugin
 // Install HTML Publisher plugin and JUnit plugin
 // Install ansicolor plugin
 
@@ -21,15 +21,30 @@ pipeline {
     }
 
     parameters {
-        string(name: 'ENV', defaultValue: 'preprod', description: 'Environment file name, which is stored in Jenkins credentials')
+        string(name: 'ENV', defaultValue: '', description: 'Environment file name, which is stored in Jenkins credentials')
         choice(name: 'TEST_RUN',
                choices: ["feature", "regression", "sanity"],
                description: 'Select a type of test run.')
-        string(name: 'TEST_FILE', defaultValue: '', description: 'Relative path of Test file, for more than one file separate them with space')
+        string(name: 'TEST_FILE_PATH', defaultValue: '', trim: true, description: 'Relative path of test file (if more than one file separate them with space)')
     }
 
     stages {
-        stage('Setting up test bed') {
+         stage('Validating parameters') {
+            steps {
+                script {
+                    if (params.ENV == '') {
+                        error("Please provide the environment file name.")
+                    }
+                    if (params.TEST_RUN == 'feature') {
+                        if (params.TEST_FILE_PATH == '') {
+                            error("Please provide the test file path.")
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Installing dependencies') {
             steps {
 		    script{
                 withCredentials([file(credentialsId: params.ENV, variable: params.ENV)]) {
@@ -49,7 +64,7 @@ pipeline {
             steps {
                 script {
                     if (params.TEST_RUN == 'feature') {
-                        sh "ENV=${params.ENV} yarn playwright test ${params.TEST_FILE}"
+                        sh "ENV=${params.ENV} yarn playwright test ${params.TEST_FILE_PATH}"
                     } else if (params.TEST_RUN == 'regression') {
                         if (JOB_NAME.contains('project1')){
                             sh "ENV=${params.ENV} yarn playwright test tests/project1/"
