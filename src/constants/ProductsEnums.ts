@@ -1,3 +1,3 @@
-export enum ProductsEnums {
-  SEARCH_RESULTS = 'Search results',
+export enum Products {
+  SearchResults = 'Search results',
 }

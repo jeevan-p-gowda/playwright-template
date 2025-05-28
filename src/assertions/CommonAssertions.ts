@@ -8,7 +8,7 @@ export default class CommonAssertions {
   }
 
   async assertValueEquals(actualValue: string, expectedValue: string, options?: { soft: boolean }): Promise<void> {
-    if (options) {
+    if (options?.soft) {
       this.expect.soft(actualValue).toBe(expectedValue);
     } else {
       this.expect(actualValue).toBe(expectedValue);

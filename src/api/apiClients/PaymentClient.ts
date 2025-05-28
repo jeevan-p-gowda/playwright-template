@@ -15,7 +15,7 @@ export default class PaymentClient extends BaseClient {
 
   async makePayment(): Promise<void> {
     const paymentEndpoint = this.endpoints.payment.payment;
-    const paymentAPI = await this.stringBuilder.APIBuilder(BaseClient.apiURL, paymentEndpoint);
+    const paymentAPI = await this.stringBuilder.apiBuilder(BaseClient.apiURL, paymentEndpoint);
     await this.request.post(paymentAPI, {});
   }
 }

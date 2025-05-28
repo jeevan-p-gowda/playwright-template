@@ -1,17 +1,21 @@
-import { chromium } from '@playwright/test';
+import { chromium, FullConfig } from '@playwright/test';
 import LoginPage from '../pageObjects/LoginPage';
 
-async function globalSetup() {
-  console.log('--Executing global setup--');
+async function globalSetup(config: FullConfig) {
+  console.log('--Executing global setup 🌐--');
+  const { baseURL, storageState } = config.projects[0].use;
   const browser = await chromium.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
-  await page.goto(process.env.BASE_URL as string);
+  console.log('Navigating to base URL...');
+  await page.goto(baseURL!);
   const loginPage: LoginPage = new LoginPage(page);
+  console.log('Logging to the application...');
   await loginPage.login(process.env.EMAIL as string, process.env.PASSWORD as string);
-  await page.context().storageState({ path: `.auth/${process.env.ENV}-auth.json` });
+  console.log('Setting storage state...');
+  await page.context().storageState({ path: storageState as string });
   await browser.close();
-  console.log('--Global setup completed--');
+  console.log('--Global setup completed ✅--');
 }
 
 export default globalSetup;
