@@ -1,7 +1,7 @@
 import { expect, Expect } from '@playwright/test';
 
 export default class CommonAssertions {
-  private readonly expect: Expect;
+  public readonly expect: Expect;
 
   constructor() {
     this.expect = expect;
