@@ -31,7 +31,7 @@ export default class AuthClient extends BaseClient {
     return responseJSON.data.session.access_token;
   }
 
-  async setAPIRequestContext(): Promise<void> {
+  async setApiIRequestContext(): Promise<void> {
     const creds = await this.stringBuilder.getRandomCreds();
     const response = await this.signUp(creds.email, creds.password);
     const accessToken = await this.logIn(creds.email, creds.password);
