@@ -7,7 +7,7 @@ export default class ProductsPage extends BasePage {
   private readonly searchField: Locator;
   private readonly searchResultsHeading: Locator;
 
-  constructor(page: Page) {
+  constructor(private page: Page) {
     super(page);
     this.searchIcon = page.getByRole('button', { name: 'Search' });
     this.searchField = page.getByPlaceholder('Search');

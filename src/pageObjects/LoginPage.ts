@@ -2,12 +2,11 @@ import { Page, Locator } from '@playwright/test';
 import BasePage from '../fixtures/BasePage';
 
 export default class LoginPage extends BasePage {
-  private readonly page: Page;
   private readonly emailField: Locator;
   private readonly passwordField: Locator;
   private readonly signInButton: Locator;
 
-  constructor(page: Page) {
+  constructor(private page: Page) {
     super(page);
     this.page = page;
     this.emailField = page.locator('input#CustomerEmail');
