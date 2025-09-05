@@ -10,8 +10,8 @@ if [ -z "$STAGED_FILES" ]; then
   exit 0
 fi
 
-echo "🔍 Running TypeScript check on staged files..."
-yarn tsc --noEmit $STAGED_FILES
+echo "🔍 Running TypeScript check on entire project..."
+yarn tsc --noEmit
 
 if [ $? -ne 0 ]; then
   echo "❌ TypeScript check failed. Fix errors before committing."
