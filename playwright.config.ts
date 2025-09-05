@@ -22,6 +22,6 @@ export default defineConfig({
     actionTimeout: 80 * 1000,
   },
   expect: { timeout: 15000 },
-  // globalSetup: require.resolve('./src/fixtures/GlobalSetup.ts'),
-  // globalTeardown: require.resolve('./src/fixtures/GlobalTearDown.ts'),
+  globalSetup: require.resolve('./src/fixtures/GlobalSetup.ts'),
+  globalTeardown: require.resolve('./src/fixtures/GlobalTearDown.ts'),
 });
