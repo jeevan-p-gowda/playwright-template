@@ -3,11 +3,10 @@ import BasePage from '../fixtures/BasePage';
 import { step } from '../utils/WinstonLoggerConfig';
 
 export default class CommonPage extends BasePage {
-  private readonly page: Page;
   private readonly homeIcon: Locator;
   private readonly accountIcon: Locator;
 
-  constructor(page: Page) {
+  constructor(private page: Page) {
     super(page);
     this.page = page;
     this.homeIcon = page.locator("//span[.='Home']");
