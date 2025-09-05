@@ -18,7 +18,7 @@ Strictly follow **SRP** while coding.
     - Follow the AAA pattern when designing test scripts.
   > Refer to existing resources and test specs for better understanding.
 
-- **Linting and formatting** - **_ESLint_** and **_Prettier_** are configured to automatically format code when saving the file.
+- **Linting and formatting** - **_ESLint_** and **_Prettier_** are configured to automatically format and lint the code on saving the file.
 - **Type checking** 
   - A git pre-commit hook has been configured using **_Husky_** ensures type checking.
   - Resolve any errors before committing changes.
@@ -89,7 +89,7 @@ Strictly follow **SRP** while coding.
 Branch validation has been carried out on Jenkins Multi branch pipeline.
 
 - **Pre-requisite**
-  - Prepare a `.env` file which has required secrets and store it scoped to pipeline.
+  - Prepare a `<env_file_name>.env` file which has required secrets and store it scoped to pipeline.
 - **Trigger a test run**
   - Navigate to Pull Requests -> PR Title -> Build with Parameters.
   - Fill in all required fields and start the build.
