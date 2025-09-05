@@ -33,6 +33,10 @@
   - Running Tests with Custom Reporter: Set a custom reporter, e.g., `yarn playwright test --reporter=json`
   - Sharding Tests for Distributed Execution: Divide tests into shards using `yarn playwright test --shard=1/3`
 
+- Code Generation:
+  - Basic codegen: Record user interactions and generate test scripts with `yarn playwright codegen`
+  - Generate with specific URL: Target a particular browser for recording, e.g., `yarn playwright codegen https://google.com`
+
 ## Tips and Hints
 
 - Experiment with different CLI commands to tailor test runs according to your needs.
