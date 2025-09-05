@@ -28,8 +28,23 @@
     "module": "commonjs" /* Specify what module code is generated. */,
     // "rootDir": "./",                                  /* Specify the root folder within your source files. */
     // "moduleResolution": "node10",                     /* Specify how TypeScript looks up a file from a given module specifier. */
-    // "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
-    // "paths": {},                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
+    "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
+    "paths": {
+      "@pages/*":["src/pageObjects/*"],
+      "@assertions/*":["src/assertions/*"],
+      "@models/*":["src/models/*"],
+      "@fixtures/*":["src/fixtures/*"],
+      "@constants/*":["src/constants/*"],
+      "@resources/*":["src/resources/*"],
+      "@utils/*":["src/utils/*"],
+      "@components/*":["src/components/*"],
+      "@apiClients/*":["src/api/apiClients/*"],
+      "@apiConstants/*":["src/api/apiConstants/*"],
+      "@apiFixtures/*":["src/api/apiFixtures/*"],
+      "@apiModels/*":["src/api/apiModels/*"],
+      "@apiResources/*":["src/api/apiResources/*"],
+      "@apiUtils/*":["src/api/apiUtils/*"],
+    },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
     // "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */
