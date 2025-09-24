@@ -86,14 +86,17 @@ Strictly follow **SRP** while coding.
 
 ### CI
 
-Branch validation has been carried out on Jenkins Multi branch pipeline.
+If branch validation is being carried out on Jenkins Multi branch pipeline.
 
 - **Pre-requisite**
-  - Prepare a `<env_file_name>.env` file which has required secrets and store it scoped to pipeline.
+  - Prepare a `<env_file_name>.env` file which has required secrets and store it in credentials scoped to pipeline.
 - **Trigger a test run**
-  - Navigate to Pull Requests -> PR Title -> Build with Parameters.
+  - Navigate to pipeline and click on Scan Repository Now.
+  - Click on Pull Requests -> PR Title -> Build with Parameters.
   - Fill in all required fields and start the build.
   - Review the test results after execution and investigate any failures.
+> [!NOTE]
+> First build will fail due to missing params. This will facilitate to run the job with required params.
 
 ### Merging
 
