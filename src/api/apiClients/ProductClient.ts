@@ -17,7 +17,6 @@ export default class ProductClient extends BaseClient {
     const productEndpoint = this.endpoints.product.products;
     const productAPI = await this.stringBuilder.apiBuilder(BaseClient.apiURL, productEndpoint);
     const response = await this.request.get(productAPI);
-    return await response.json();
-    // const products = await this.serializeDeserialize.deserialize(ProductListModel, await response.json());
+    return response;
   }
 }
