@@ -28,12 +28,21 @@ E-Commerce - [Website](https://web-playground.ultralesson.com)
    EMAIL=xxxx@gmail.com
    PASSWORD=Xxxx@xx24
    ```
-   > Config secrets on CI differs from tool to tool, kindly refactor / use different approach.
+> [!CAUTION]
+> Do not hardcode any sensitive information
 
 ### ⏯️Execution
 `ENV=<env_file_name> yarn playwright test <relative_path_to_test_file>`
-> [!NOTE]
+> [!WARNING]
 > If using Windows, set IDE terminal to Git Bash and execute.
+
+### ♾️CI
+Follow one of the below examples to configure CI.
+1. Jenkins - Create a pipeline as per required style, map the [Jenkinsfile](Jenkinsfile) in build config.
+2. Github Actions - [.yml](.github/workflows/feature.yml) will reflect automatically in Actions when pushed.
+> [!IMPORTANT]
+> Install all plugins for Jenkins mentioned in [Jenkinsfile](Jenkinsfile) comments.
+> Delete [.yml](.github/workflows/feature.yml) if using different CI tool.
 
 ### 🧑🏻‍🦯Guide
 * Follow [this](COMMANDS.md) for different commands to run tests.
@@ -43,3 +52,6 @@ E-Commerce - [Website](https://web-playground.ultralesson.com)
 If you encounter any dependency issues, follow these steps:
 1. Delete the `node_modules` folder and the `yarn.lock` file.
 2. Run `yarn` to install the dependencies.
+> [!TIP]
+> Upgrade playwright with `yarn up @playwright/test`
+> Set yarn latest stable version with `yarn set version stable`
