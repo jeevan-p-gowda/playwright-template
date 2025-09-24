@@ -20,6 +20,7 @@
 5. **Interactive Testing and Help**:
 - Interactive UI mode: Run tests interactively with `yarn playwright test --ui`, ideal for developing new tests.
 - Help command: Access detailed command options with `yarn playwright test --help`.
+- Viewing report `yarn playwright show-report`
 
 ### Practical Examples:
 - Combining Commands for Specific Scenarios:
@@ -37,10 +38,7 @@
   - Basic codegen: Record user interactions and generate test scripts with `yarn playwright codegen`
   - Generate with specific URL: Target a particular browser for recording, e.g., `yarn playwright codegen https://google.com`
 
-## Tips and Hints
-
-- Experiment with different CLI commands to tailor test runs according to your needs.
-
-- Use environment variables alongside CLI commands for more dynamic test configurations.
-
-- Regularly review Playwright's documentation for updates on CLI options.
+> [!TIP]
+> Experiment with different CLI commands to tailor test runs according to your needs.
+> Use environment variables alongside CLI commands for more dynamic test configurations.
+> Regularly review Playwright's documentation for updates on CLI options.
