@@ -11,6 +11,16 @@ if [ -z "$STAGED_FILES" ]; then
 fi
 
 echo "🔍 Running TypeScript check on entire project..."
+
+echo "🔍 Checking for page.pause() in TypeScript files..."
+for file in $STAGED_FILES; do
+  if grep -q "await page\.pause()" "$file"; then
+    echo "❌ Found 'await page.pause()' in staged file: $file. Remove before committing."
+    exit 1
+  fi
+done
+echo "✅ No page.pause() found."
+
 yarn tsc --noEmit
 
 if [ $? -ne 0 ]; then
