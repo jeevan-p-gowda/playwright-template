@@ -20,7 +20,7 @@ E-Commerce - [Website](https://web-playground.ultralesson.com)
 2. Install [NodeJS](https://nodejs.org/en) >=18 - based on your platform
 3. Run `git clone` - to clone the repo
 4. Install [VS Code](https://code.visualstudio.com/) Editor and open the repo
-5. Install recommended VS code extensions
+5. Install recommended VS code [extensions](.vscode/extensions.json)
 6. Run `make setup` - install all dependencies.
 7. Create a folder 📁.env under the root dir, then within it create `<env_file_name>.env` file containing variables of app which has to be maintained as a secret. Below is the example,
    ```env
@@ -36,13 +36,17 @@ E-Commerce - [Website](https://web-playground.ultralesson.com)
 > [!WARNING]
 > If using Windows, set IDE terminal to Git Bash and execute.
 
+### 🧬Features
+* Reporting: Utilized native playwright html report, view by executing `yarn playwright show-report`.
+* Debugging: follow steps mentioned [here](CONTRIBUTING.md).
+
 ### ♾️CI
 Follow one of the below examples to configure CI.
 1. Jenkins - Create a pipeline as per required style, map the [Jenkinsfile](Jenkinsfile) in build config.
 2. Github Actions - [.yml](.github/workflows/feature.yml) will reflect automatically in Actions when pushed.
 > [!IMPORTANT]
 > Install all plugins for Jenkins mentioned in [Jenkinsfile](Jenkinsfile) comments.
-> Delete [.yml](.github/workflows/feature.yml) if using different CI tool.
+> Delete [.yml](.github/workflows/feature.yml) if using different CI tool other than Github Actions.
 
 ### 🧑🏻‍🦯Guide
 * Follow [this](COMMANDS.md) for different commands to run tests.
