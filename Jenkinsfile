@@ -21,7 +21,7 @@ pipeline {
     }
 
     parameters {
-        string(name: 'ENV', defaultValue: '', description: 'Environment file name, which is stored in Jenkins credentials')
+        string(name: 'ENV', defaultValue: '', trim: true, description: 'Environment file name, which is stored in Jenkins credentials')
         choice(name: 'TEST_RUN',
                choices: ["feature", "regression", "sanity"],
                description: 'Select a type of test run.')

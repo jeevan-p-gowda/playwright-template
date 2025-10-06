@@ -13,10 +13,10 @@ export default class ProductClient extends BaseClient {
     this.request = BaseClient.requestContext;
   }
 
-  async getProductList(): Promise<void> {
+  async getProductList(): Promise<any> {
     const productEndpoint = this.endpoints.product.products;
     const productAPI = await this.stringBuilder.apiBuilder(BaseClient.apiURL, productEndpoint);
     const response = await this.request.get(productAPI);
-    // const products = await this.serializeDeserialize.deserialize(ProductListModel, await response.json());
+    return response;
   }
 }

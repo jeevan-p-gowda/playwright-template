@@ -9,8 +9,12 @@ export default class StringBuilder {
 
   async apiBuilder(apiURL: string, endpoint: string, option?: { id: number }): Promise<string> {
     let api: string;
-    if (option?.id) {
-      api = endpoint.replace(/{(.*?)}/, option.id.toString());
+    const placeholderMatch = endpoint.match(/{([^}]+)}/);
+    if (placeholderMatch) {
+      if (!option?.id) {
+        throw new Error(`missing ${placeholderMatch[0]} in ${endpoint}`);
+      }
+      api = endpoint.replace(/{[^}]+}/g, option.id.toString());
     } else {
       api = endpoint;
     }

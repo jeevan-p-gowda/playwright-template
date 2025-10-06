@@ -55,9 +55,14 @@ test.describe('Search E2E tests', () => {
       const searchResultHeading = await productPage.getSearchResultsHeading();
 
       console.log(`Asserting search results heading: ${searchResultHeading}`);
-      await productsAssertions.assertSearchResultsHeading(searchResultHeading);
-    } catch (error) {
-      console.error(error);
+
+      await productsAssertions
+        .expect(async () => {
+          await productsAssertions.assertSearchResultsHeading(searchResultHeading);
+        })
+        .toPass({ timeout: 5000 });
+    } catch (error: any) {
+      throw new Error(`Test failed with: ${error.message}`);
     }
   });
 });
