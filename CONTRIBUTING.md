@@ -18,14 +18,14 @@ Strictly follow **SRP** while coding.
     - Follow the AAA pattern when designing test scripts.
   > Refer to existing resources and test specs for better understanding.
 
-- **Linting and formatting** - **_ESLint_** and **_Prettier_** are configured to automatically format and lint the code on saving the file.
+- **Linting and formatting** - **_ESLint_** and **_Prettier_** are [configured](.vscode/settings.json) for any VS Code family editors to automatically format and lint the code on saving the file.
 - **Type checking** 
-  - A git pre-commit hook has been configured using **_Husky_** ensures type checking.
+  - A git pre-commit hook has been [configured](.husky/pre-commit) using **_Husky_** ensures type checking.
   - Resolve any errors before committing changes.
-- **Execute** 
-  - Run tests using Playwright CLI commands, VS Code Playwright Test Runner, or Playwright UI.
-- **Debugging** 
-  - Use Playwright Debugger or VS Code Debugger for step-by-step execution.
+
+## Execution and debugging
+  - Run tests using Playwright CLI [commands](COMMANDS.md), VS Code Playwright Test Runner, or Playwright UI.
+  - Use Playwright Debugger or VS Code Debugger or `await page.pause()` for step-by-step execution.
   - Utilize Playwright HTML reports, screenshots, videos, or the Trace Viewer for debugging failed tests.
 
 ## Style Guide
@@ -102,7 +102,7 @@ If branch validation is being carried out on Jenkins Multi branch pipeline.
 
 Merging to the `main` branch has to be done only after evaluation the following,
 
-- All reviewer comments must be addressed and reviewed again after pushing resolves.
+- All reviewer comments must be addressed if any and reviewed again after pushing resolves.
 - Test runs on both local and CI environments must pass.
 
 ## Best practices
