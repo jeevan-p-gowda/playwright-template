@@ -5,4 +5,5 @@ setup:
 	@yarn 
 	@yarn playwright install chromium
 	@yarn husky install
+	@mkdir -p .env
 	@echo "✅ Setup complete!"
