@@ -22,7 +22,7 @@ E-Commerce - [Website](https://web-playground.ultralesson.com)
 4. Install [VS Code](https://code.visualstudio.com/) Editor and open the repo
 5. Install recommended VS code [extensions](.vscode/extensions.json)
 6. Run `make setup` - install all dependencies.
-7. Create a folder 📁.env under the root dir, then within it create `<env_file_name>.env` file containing variables of app which has to be maintained as a secret. Below is the example,
+7. In folder 📁.env create `<env_file_name>.env` file containing variables of app which has to be maintained as a secret. Below is the example,
    ```env
    BASE_URL=https://web-playground.ultralesson.com/account/login
    EMAIL=xxxx@gmail.com
