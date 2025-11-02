@@ -5,10 +5,10 @@
 
 pipeline {
     agent {
-	   docker{
-		   image 'mcr.microsoft.com/playwright:v1.48.2-focal'
-		   args '-u root:sudo'
-	   }
+        docker {
+            image 'mcr.microsoft.com/playwright:v1.48.2-focal'
+            args '-u root:sudo'
+        }
     }
 
     options {
@@ -29,7 +29,7 @@ pipeline {
     }
 
     stages {
-         stage('Validating parameters') {
+        stage('Validating parameters') {
             steps {
                 script {
                     if (params.ENV == '') {
@@ -46,17 +46,17 @@ pipeline {
 
         stage('Installing dependencies') {
             steps {
-		    script{
-                withCredentials([file(credentialsId: params.ENV, variable: params.ENV)]) {
-                    sh """
-                    mkdir -p .env
-                    cp \$${params.ENV} .env/
-                    corepack enable
-                    yarn
-                    yarn playwright install chromium
-                    """
+                script {
+                    withCredentials([file(credentialsId: params.ENV, variable: params.ENV)]) {
+                        sh """
+                        mkdir -p .env
+                        cp \$${params.ENV} .env/
+                        corepack enable
+                        yarn
+                        yarn playwright install chromium
+                        """
+                    }
                 }
-		    }
             }
         }
 
@@ -66,33 +66,52 @@ pipeline {
                     if (params.TEST_RUN == 'feature') {
                         sh "ENV=${params.ENV} yarn playwright test ${params.TEST_FILE_PATH}"
                     } else if (params.TEST_RUN == 'regression') {
-                        if (JOB_NAME.contains('project1')){
+                        if (JOB_NAME.contains('project1')) {
                             sh "ENV=${params.ENV} yarn playwright test tests/project1/"
                         } else {
                             sh "ENV=${params.ENV} yarn playwright test tests/project2/"
                         }
-                    } else if (params.TEST_RUN('sanity')) {
-                        if (JOB_NAME.contains('project1')){
+                    } else if (params.TEST_RUN == 'sanity') {
+                        if (JOB_NAME.contains('project1')) {
                             sh "ENV=${params.ENV} yarn playwright test tests/project1/ --grep @sanity"
                         } else {
                             sh "ENV=${params.ENV} yarn playwright test tests/project2/ --grep @sanity"
                         }
                     }
                 }
-}
-}
-    post {
-        always {
-            junit 'playwright-report/junit.xml'
-            publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: true,
-                            keepAll: true,
-                            reportDir: 'playwright-report',
-                            reportFiles: 'index.html',
-                            reportName: "HTML Report",
-                        ])
+            }
+
+            post {
+                always {
+                    junit 'playwright-report/junit.xml'
+                    def branch = env.CHANGE_BRANCH ?: env.BRANCH_NAME ?: env.GIT_BRANCH ?: 'Unknown'
+                    publishHTML([
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'playwright-report',
+                        reportFiles: 'index.html',
+                        reportName: "HTML Report",
+                    ])
+                    script {
+                        def summary = junit testResults: 'playwright-report/junit.xml'
+                        def branch = env.CHANGE_BRANCH ?: env.BRANCH_NAME ?: env.GIT_BRANCH ?: 'Unknown'
+                        String message = "> <h2>Playwright E2E automation results </h2><hr> <b>Jenkins Job URL</b> : <a href = '${BUILD_URL}'>Job URL</a><br/>"
+
+                        if (summary.failCount > 0) {
+                            message = message + "<b>Test Status</b> : &#10060; FAILED <br/>"
+                        } else if (summary.totalCount == summary.skipCount) {
+                            message = message + "<b>Test Status</b> : &#9888; SKIPPED <br/>"
+                        } else {
+                            message = message + "<b>Test Status</b> : &#9989; PASSED <br/>"
+                        }
+
+                        message = message + "<b>Test Branch</b> : ${branch} <br/><pre> <b>Test Summary</b>  ⇒  Total : ${summary.totalCount}  |  Failures: ${summary.failCount}  |  Skipped: ${summary.skipCount}  | Passed: ${summary.passCount}  |</pre>"
+                        echo "${message}"
+
+                    }
+                }
+            }
         }
-}
-}
+    }
 }
