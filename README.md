@@ -16,10 +16,13 @@ E-Commerce - [Website](https://web-playground.ultralesson.com)
 2. Playwright.
 
 ### 🛠️Setup
-1. Install [Git Bash](https://git-scm.com/downloads) - for Windows
-2. Install [NodeJS](https://nodejs.org/en) >=18 - based on your platform
+1. Install Git
+    1. For Windows - Install [Git Bash](https://git-scm.com/downloads)
+    2. For MacOS X
+        1. Install [brew](/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
+        2. Install git - `brew install git`2. Install [NodeJS](https://nodejs.org/en) >=18 - based on your platform
 3. Run `git clone` - to clone the repo
-4. Install [VS Code](https://code.visualstudio.com/) Editor and open the repo
+4. Install [Cursor](https://appstore.cisco.com/details/cursor) an AI coding agent and open the cloned repo
 5. Install recommended VS code [extensions](.vscode/extensions.json)
 6. Run `make setup` - install all dependencies.
 7. In folder 📁.env create `<env_file_name>.env` file containing variables of app which has to be maintained as a secret. Below is the example,
@@ -53,9 +56,19 @@ Follow one of the below examples to configure CI.
 * Refer [this](CONTRIBUTING.md) for contributing.
 
 ### 🔨Troubleshoot
-If you encounter any dependency issues, follow these steps:
-1. Delete the `node_modules` folder and the `yarn.lock` file.
-2. Run `yarn` to install the dependencies.
+1. If you encounter any dependency issues, follow these steps:
+    1. Delete the `node_modules` folder and the `yarn.lock` file.
+    2. Run `yarn` to install the dependencies.
+2. In **Windows**
+    1. if you get **nodejs** permission issue
+        1. Navigate to `C:\Program Files\nodejs`
+        2. Right click on `nodejs` folder and click on **Properties**
+        3. Go to **Security** tab and click **Edit**
+        4. Click on **Users(hostname of your PC)** and check **Full control** permission for Allow
+        5. Click on **Apply** and **OK**
+    2. if you get **EPERM: operation not permitted" on Windows with npm**
+        1. Open `.npmrc` file by executing `npm config edit` in terminal or manually with any text editor.
+        2. Change `prefix` variable to `C:\Users\<User Name>\AppData\Roaming\npm`
 > [!TIP]
 > Upgrade playwright with `yarn up @playwright/test`
 > Set yarn latest stable version with `yarn set version stable`
