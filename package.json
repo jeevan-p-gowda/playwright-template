@@ -8,7 +8,9 @@
   "license": "ISC",
   "scripts": {
     "api": "playwright test tests/Api.spec.ts --config=playwright.api.config.ts",
-    "web": "playwright test tests/example.spec.ts"
+    "web": "playwright test tests/example.spec.ts",
+    "regress": "playwright test",
+    "sanity": "playwright test --grep @sanity"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
