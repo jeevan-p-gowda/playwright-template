@@ -19,8 +19,9 @@ E-Commerce - [Website](https://web-playground.ultralesson.com)
 1. Install Git
     1. For Windows - Install [Git Bash](https://git-scm.com/downloads)
     2. For MacOS X
-        1. Install [brew](/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
-        2. Install git - `brew install git`2. Install [NodeJS](https://nodejs.org/en) >=18 - based on your platform
+        1. Install **brew** by executing `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+        2. Install git - `brew install git`
+2. Install [NodeJS](https://nodejs.org/en) >=18 - based on your platform
 3. Run `git clone` - to clone the repo
 4. Install [Cursor](https://appstore.cisco.com/details/cursor) an AI coding agent and open the cloned repo
 5. Install recommended VS code [extensions](.vscode/extensions.json)
