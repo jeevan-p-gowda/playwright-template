@@ -84,19 +84,20 @@ pipeline {
             post {
                 always {
                     junit 'playwright-report/junit.xml'
-                    def branch = env.CHANGE_BRANCH ?: env.BRANCH_NAME ?: env.GIT_BRANCH ?: 'Unknown'
                     publishHTML([
                         allowMissing: false,
                         alwaysLinkToLastBuild: true,
                         keepAll: true,
                         reportDir: 'playwright-report',
                         reportFiles: 'index.html',
-                        reportName: "HTML Report",
+                        reportName: "UI Automation Report",
                     ])
                     script {
                         def summary = junit testResults: 'playwright-report/junit.xml'
                         def branch = env.CHANGE_BRANCH ?: env.BRANCH_NAME ?: env.GIT_BRANCH ?: 'Unknown'
                         String message = "> <h2>Playwright E2E automation results </h2><hr> <b>Jenkins Job URL</b> : <a href = '${BUILD_URL}'>Job URL</a><br/>"
+
+                        message = message + "<b>Test Env</b> : ${params.ENV} <br/>"
 
                         if (summary.failCount > 0) {
                             message = message + "<b>Test Status</b> : &#10060; FAILED <br/>"
