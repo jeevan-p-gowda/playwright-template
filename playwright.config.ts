@@ -31,11 +31,13 @@ dotenv.config({
 export default defineConfig({
   testDir: './tests',
   workers: 1,
+  retries: process.env.CI ? 1 : 0,
+  timeout: 30 * 1000,
   reporter: [['html', { open: 'never' }], ['junit', { outputFile: 'playwright-report/junit.xml' }], ['./src/utils/WinstonLoggerConfig.ts']],
   use: {
     viewport: { width: 1280, height: 720 },
     browserName: 'chromium',
-    headless: true,
+    headless: process.env.CI ? true : false,
     baseURL: process.env.BASE_URL,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
