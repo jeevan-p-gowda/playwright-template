@@ -32,13 +32,13 @@ E-Commerce - [Website](https://web-playground.ultralesson.com)
    EMAIL=xxxx@gmail.com
    PASSWORD=Xxxx@xx24
    ```
-    > [!CAUTION]
-    > Do not hardcode any sensitive information
+  > [!CAUTION]
+  > Do not hardcode any sensitive information
 
 ### ⏯️Execution
 `ENV=<env_file_name> yarn playwright test <relative_path_to_test_file>`
-    > [!WARNING]
-    > If using Windows, set IDE terminal to Git Bash and execute.
+  > [!WARNING]
+  > If using Windows, set IDE terminal to Git Bash and execute.
 
 ### 🧬Features
 * Reporting: Utilized native playwright html report, view by executing `yarn playwright show-report`.
@@ -48,9 +48,9 @@ E-Commerce - [Website](https://web-playground.ultralesson.com)
 Follow one of the below examples to configure CI.
 1. Jenkins - Create a pipeline as per required style, map the [Jenkinsfile](Jenkinsfile) in build config.
 2. Github Actions - [.yml](.github/workflows/feature.yml) will reflect automatically in Actions when pushed.
-    > [!IMPORTANT]
-    > Install all plugins for Jenkins mentioned in [Jenkinsfile](Jenkinsfile) comments.
-    > Delete [.yml](.github/workflows/feature.yml) if using different CI tool other than Github Actions.
+  > [!IMPORTANT]
+  > Install all plugins for Jenkins mentioned in [Jenkinsfile](Jenkinsfile) comments.
+  > Delete [.yml](.github/workflows/feature.yml) if using different CI tool other than Github Actions.
 
 ### 🧑🏻‍🦯Guide
 * Follow [this](COMMANDS.md) for different commands to run tests.
