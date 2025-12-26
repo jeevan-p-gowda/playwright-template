@@ -95,8 +95,8 @@ If branch validation is being carried out on Jenkins Multi branch pipeline.
   - Click on Pull Requests -> PR Title -> Build with Parameters.
   - Fill in all required fields and start the build.
   - Review the test results after execution and investigate any failures.
-> [!NOTE]
-> First build will fail due to missing params. This will facilitate to run the job with required params.
+  > [!NOTE]
+  > First build will fail due to missing params. This will facilitate to run the job with required params.
 
 ### Merging
 
