@@ -2,6 +2,7 @@
 // Install docker plugins (Docker Pipeline) and enable SSH agent plugin
 // Install HTML Publisher plugin and JUnit plugin
 // Install ansicolor plugin
+// Install Parameter Separator plugin
 
 pipeline {
     agent {
@@ -21,6 +22,7 @@ pipeline {
     }
 
     parameters {
+        separator(name: 'test_run_parameters', sectionHeader: 'Test Run Parameters')
         string(name: 'ENV', defaultValue: '', trim: true, description: 'Environment file name, which is stored in Jenkins credentials')
         choice(name: 'TEST_RUN',
                choices: ["feature", "regression", "sanity"],
