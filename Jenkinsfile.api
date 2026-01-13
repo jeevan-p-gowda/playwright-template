@@ -17,7 +17,8 @@ pipeline {
 
     parameters {
         separator(name: 'test_run_parameters', sectionHeader: 'Test Run Parameters')
-        string(name: 'ENV', defaultValue: '', trim: true, description: 'Environment file name, which is stored in Jenkins credentials')
+        credentials credentialType: 'org.jenkinsci.plugins.plaincredentials.impl.FileCredentialsImpl', defaultValue: '', 
+        description: 'Environment file name, which is stored in Jenkins credential', name: 'ENV', required: true
         choice(name: 'TEST_RUN',
                choices: ["feature", "regression", "sanity"],
                description: 'Select a type of test run.')
@@ -28,9 +29,6 @@ pipeline {
         stage('Validating parameters') {
             steps {
                 script {
-                    if (params.ENV == '') {
-                        error("Please provide the environment file name.")
-                    }
                     if (params.TEST_RUN == 'feature') {
                         if (params.TEST_FILE_PATH == '') {
                             error("Please provide the test file path.")
