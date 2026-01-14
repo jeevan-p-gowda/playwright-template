@@ -48,6 +48,9 @@ pipeline {
             steps {
                 script {
                     if (params.TEST_RUN == 'feature') {
+                        if (env.IS_INT_ENV == 'false') {
+                            error("Feature tests can only be run on integration environment.")
+                        }
                         if (params.TEST_FILE_PATH == '') {
                             error("Please provide the test file path.")
                         }
