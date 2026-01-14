@@ -29,7 +29,25 @@ pipeline {
                choices: ["feature", "regression", "sanity"],
                description: 'Select a type of test run.')
         string(name: 'TEST_FILE_PATH', defaultValue: '', trim: true, description: 'Relative path of test file (if more than one file separate them with space)')
+        booleanParam(name: 'PUSH_TEST_DATA', defaultValue: false, description: 'Push test data to the database')
     }
+
+    stage("Setting up env variables") {
+            steps {
+                script {
+                    withCredentials([file(credentialsId: params.ENV, variable: params.ENV)]) {
+                        sh """
+                            rm -rf .env
+                            mkdir -p .env
+                            cp \$${params.ENV} .env/
+                        """
+                        def props = readProperties file: ".env/${params.ENV}.env"
+                        def baseUrl = props['BASE_URL']
+                        env.IS_INT_ENV = (baseUrl.contains('int') ? 'true' : 'false')
+                    }
+                }
+            }
+        }
 
     stages {
         stage('Validating parameters') {
@@ -38,6 +56,11 @@ pipeline {
                     if (params.TEST_RUN == 'feature') {
                         if (params.TEST_FILE_PATH == '') {
                             error("Please provide the test file path.")
+                        }
+                    }
+                    if (params.TEST_RUN == 'regression'){
+                        if (env.IS_INT_ENV == 'false') {
+                            error("Regression tests are only supported in int environment.")
                         }
                     }
                 }
@@ -49,13 +72,27 @@ pipeline {
                 script {
                     withCredentials([file(credentialsId: params.ENV, variable: params.ENV)]) {
                         sh """
-                        mkdir -p .env
-                        cp \$${params.ENV} .env/
                         corepack enable
                         yarn
                         yarn playwright install chromium
                         """
                     }
+                }
+            }
+        }
+
+        stage('Check and push test data') {
+            when {
+                beforeAgent true
+                expression {
+                    params.PUSH_TEST_DATA && env.IS_INT_ENV == 'true'
+                }
+            }
+            steps {
+                script {
+                    sh """
+                    echo "Write a logic to push test data to the database"
+                    """
                 }
             }
         }
