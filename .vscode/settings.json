@@ -4,5 +4,8 @@
     "**/.yarn": true,
     "**/.pnp.*": true
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "[markdown]": {
+    "editor.formatOnSave": false
+  }
 }
