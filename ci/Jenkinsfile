@@ -43,6 +43,7 @@ pipeline {
                         """
                         def props = readProperties file: ".env/${params.ENV}.env"
                         def baseUrl = props['BASE_URL']
+                        env.ENV = baseUrl
                         env.IS_INT_ENV = (baseUrl.contains('int') ? 'true' : 'false')
                     }
                 }
@@ -137,7 +138,7 @@ pipeline {
                         def branch = env.CHANGE_BRANCH ?: env.BRANCH_NAME ?: env.GIT_BRANCH ?: 'Unknown'
                         String message = "> <h2>Playwright E2E automation results </h2><hr> <b>Jenkins Job URL</b> : <a href = '${BUILD_URL}'>Job URL</a><br/>"
 
-                        message = message + "<b>Test Env</b> : ${params.ENV} <br/>"
+                        message = message + "<b>Test Env</b> : ${env.ENV} <br/>"
 
                         if (summary.failCount > 0) {
                             message = message + "<b>Test Status</b> : &#10060; FAILED <br/>"
