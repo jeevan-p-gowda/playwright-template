@@ -1,9 +1,10 @@
-# playwright-template <img align="right" src="https://playwright.dev/img/playwright-logo.svg" width="auto" height="100" title='Playwright'/>
+# playwright-template <img align="right" src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" width="auto" height="80"><img align="right" src="https://playwright.dev/img/playwright-logo.svg" width="auto" height="100" title='Playwright'/>
 
-[![Playwright](https://img.shields.io/badge/Playwright-45ba4b?logo=playwright&logoColor=white)](https://playwright.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Playwright TS](https://img.shields.io/badge/Playwright-TypeScript-45ba4b?logo=playwright&logoColor=white)](https://playwright.dev)
 [![Chromium](https://img.shields.io/badge/Chromium-Latest-blue?logo=google-chrome)](https://www.chromium.org/Home)
+[![Yarn](https://img.shields.io/badge/Yarn-package%20manager-2C8EBB?logo=yarn&logoColor=white)](https://yarnpkg.com)
+[![Jenkins](https://img.shields.io/badge/Jenkins-CI-D24939?logo=jenkins&logoColor=white)](https://www.jenkins.io)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 This repository provides a template for getting started with building a Playwright framework. It includes a pre-configured setup for writing, running, and managing end-to-end tests for web applications.
 
