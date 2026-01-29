@@ -1,11 +1,8 @@
 {
   "name": "playwright-template",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Jeevan Gowda",
+  "license": "MIT",
+  "private": true,
   "scripts": {
     "api": "playwright test tests/Api.spec.ts --config=playwright.api.config.ts",
     "web": "playwright test tests/example.spec.ts",
