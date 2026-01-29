@@ -1,5 +1,10 @@
 # playwright-template <img align="right" src="https://playwright.dev/img/playwright-logo.svg" width="auto" height="100" title='Playwright'/>
 
+[![Playwright](https://img.shields.io/badge/Playwright-45ba4b?logo=playwright&logoColor=white)](https://playwright.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Chromium](https://img.shields.io/badge/Chromium-Latest-blue?logo=google-chrome)](https://www.chromium.org/Home)
+
 This repository provides a template for getting started with building a Playwright framework. It includes a pre-configured setup for writing, running, and managing end-to-end tests for web applications.
 
 ### 🧩Application
