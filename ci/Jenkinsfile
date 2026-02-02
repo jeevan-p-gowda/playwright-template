@@ -78,7 +78,8 @@ pipeline {
                         sh """
                         corepack enable
                         yarn
-                        yarn playwright install chromium
+                        yarn playwright install chromium --only-shell
+                        yarn playwright install chrome
                         """
                     }
                 }
