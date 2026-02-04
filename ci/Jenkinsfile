@@ -14,7 +14,12 @@ pipeline {
 
     options {
         ansiColor('xterm')
+        timeout(time: 120, unit: 'MINUTES')
         disableConcurrentBuilds()
+    }
+
+    tools {
+        nodejs '20'
     }
 
     triggers {
@@ -41,8 +46,7 @@ pipeline {
                             mkdir -p .env
                             cp \$${params.ENV} .env/
                         """
-                        def props = readProperties file: ".env/${params.ENV}.env"
-                        def baseUrl = props['BASE_URL']
+                        def baseUrl = sh(script: "cat .env/${params.ENV}.env | grep BASE_URL | cut -d '=' -f 2", returnStdout: true)
                         env.ENV = baseUrl
                         env.IS_INT_ENV = (baseUrl.contains('int') ? 'true' : 'false')
                     }
