@@ -6,6 +6,7 @@ export default class ProductsPage extends BasePage {
   private readonly searchIcon: Locator;
   private readonly searchField: Locator;
   private readonly searchResultsHeading: Locator;
+  private readonly productList: Locator;
 
   constructor(private page: Page) {
     super(page);
@@ -14,6 +15,7 @@ export default class ProductsPage extends BasePage {
     this.searchResultsHeading = page.getByRole('heading', {
       name: 'Search results',
     });
+    this.productList = page.locator('//div[@class="product-list"]');
   }
 
   @step()
@@ -26,5 +28,15 @@ export default class ProductsPage extends BasePage {
   @step()
   async getSearchResultsHeading(): Promise<string> {
     return await this.searchResultsHeading.innerText();
+  }
+
+  @step()
+  async getProductListCount(): Promise<number> {
+    return await this.productList.count();
+  }
+
+  @step()
+  async getStatus(): Promise<string> {
+    return await this.page.locator('//div[@class="status"]').innerText();
   }
 }

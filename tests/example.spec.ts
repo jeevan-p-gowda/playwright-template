@@ -1,8 +1,8 @@
 import ProductsAssertions from '../src/assertions/ProductsAssertions';
 import { test as BaseTest } from '../src/fixtures/BaseTest';
 import { ProductData } from '../src/models/ProductData';
-import CommonPage from '../src/pageObjects/CommonPage';
-import ProductPage from '../src/pageObjects/ProductsPage';
+import CommonPage from '../src/pages/CommonPage';
+import ProductPage from '../src/pages/ProductsPage';
 import productData from '../src/resources/ProductData.json';
 
 type fixtures = {
@@ -23,11 +23,11 @@ const test = BaseTest.extend<fixtures>({
     await use(new ProductPage(page));
   },
 
-  productData: async ({}, use) => {
+  productData: async ({ }, use) => {
     await use({ ...productData.product });
   },
 
-  productsAssertions: async ({}, use) => {
+  productsAssertions: async ({ }, use) => {
     await use(new ProductsAssertions());
   },
 });

@@ -1,5 +1,5 @@
 import { chromium, FullConfig } from '@playwright/test';
-import LoginPage from '../pageObjects/LoginPage';
+import LoginPage from '../pages/LoginPage';
 
 async function globalSetup(config: FullConfig) {
   console.log('--Executing global setup 🌐--');
