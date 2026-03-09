@@ -5,6 +5,7 @@
 - Run a set of test files: Group multiple test files, e.g., `yarn playwright test tests/user-flow/ tests/auth/`
 
 2. **Filtering and Specifying Tests**:
+- List all the available test - `yarn playwright test --list --reporter=list`
 - Run files by name pattern: Use patterns to target tests, e.g., `yarn playwright test user-registration* login*`
 - Run tests at a specific line: Target a test at a certain line in a file, e.g., `yarn playwright test user-registration.spec.ts:42`
 - Run tests by title: Execute tests with a specific title, e.g., `yarn playwright test -g "should log in successfully"`
