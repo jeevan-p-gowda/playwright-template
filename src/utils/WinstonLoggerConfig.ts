@@ -3,9 +3,9 @@
 import { FullConfig, Reporter, Suite, TestCase, TestError, TestResult, TestStep } from '@playwright/test/reporter';
 import { test } from '@playwright/test';
 
-const winston = require('winston');
+import winston from 'winston';
 
-const logger = winston.createLogger({
+export const logger = winston.createLogger({
   level: 'info',
   format: winston.format.combine(
     winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),

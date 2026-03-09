@@ -1,4 +1,4 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig, request } from '@playwright/test';
 import dotenv from 'dotenv';
 
 import fs from 'fs';
@@ -28,9 +28,28 @@ dotenv.config({
   path: `${process.cwd()}/.env/${process.env.ENV}.env`,
 });
 
-export default defineConfig({
-  testDir: './tests',
-  workers: 1,
-  timeout: 30 * 1000,
-  reporter: [['html', { open: 'never' }], ['./src/utils/WinstonLoggerConfig.ts'], ['junit', { outputFile: 'playwright-report/junit.xml' }]],
-});
+export default (async () => {
+  console.log('Getting access token...');
+  const requestContext = await request.newContext();
+  const response = await requestContext.get(process.env.AUTH_URL as string, {
+    headers: {
+      Authorization: `Basic ${Buffer.from(`${process.env.API_KEY}:${process.env.API_SECRET}`).toString('base64')}`,
+    },
+  });
+  const responseJson = await response.json();
+  const accessToken = responseJson.access_token as string;
+  console.log('Access token obtained');
+
+  return defineConfig({
+    testDir: './tests',
+    workers: 1,
+    timeout: 30 * 1000,
+    reporter: [['html', { open: 'never' }], ['./src/utils/WinstonLoggerConfig.ts'], ['junit', { outputFile: 'playwright-report/junit.xml' }]],
+    use: {
+      extraHTTPHeaders: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      }
+    }
+  });
+})();
