@@ -1,9 +1,12 @@
 # playwright-template <img align="right" src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" width="auto" height="80"><img align="right" src="https://playwright.dev/img/playwright-logo.svg" width="auto" height="100" title='Playwright'/>
 
-[![Playwright TS](https://img.shields.io/badge/Playwright-TypeScript-45ba4b?logo=playwright&logoColor=white)](https://playwright.dev)
-[![Chromium](https://img.shields.io/badge/Chromium-Latest-blue?logo=google-chrome)](https://www.chromium.org/Home)
-[![Yarn](https://img.shields.io/badge/Yarn-package%20manager-2C8EBB?logo=yarn&logoColor=white)](https://yarnpkg.com)
+[![Playwright TS](https://img.shields.io/badge/Playwright-1.49.0-45ba4b?logo=playwright)](https://playwright.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178c6?logo=typescript)](https://www.typescriptlang.org)
+[![Node](https://img.shields.io/badge/Node.js-20+-339933?logo=node.js)](https://nodejs.org)
+[![Chromium](https://img.shields.io/badge/Chromium-Latest-blue?logo=google-chrome&logoColor=white)](https://www.chromium.org/Home)
+[![Yarn](https://img.shields.io/badge/Yarn-4.10-2C8EBB?logo=yarn)](https://yarnpkg.com)
 [![Jenkins](https://img.shields.io/badge/Jenkins-CI-D24939?logo=jenkins&logoColor=white)](https://www.jenkins.io)
+[![CI](https://github.com/jeevan-p-gowda/playwright-template/actions/workflows/feature.yml/badge.svg)](https://github.com/your-org/playwright-template/actions/workflows/feature.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 This repository provides a template for getting started with building a Playwright framework. It includes a pre-configured setup for writing, running, and managing end-to-end tests for web applications.
